@@ -20,9 +20,9 @@ namespace MineSweeper
             if (Rb_Principiante.Checked)
             {
                 this.Visible = false;
-                Form1 Juego = new Form1(8,10);
+                Form1 Juego = new Form1(8,8,10);
                 Juego.Show();
-                Juego.modificarTabla();
+                
             }
         }
     }
