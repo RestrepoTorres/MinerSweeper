@@ -32,11 +32,12 @@ namespace MineSweeper
             this.label1 = new System.Windows.Forms.Label();
             this.Bt_Jugar = new System.Windows.Forms.Button();
             this.Rb_Principiante = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.Rb_Intermedio = new System.Windows.Forms.RadioButton();
+            this.Rb_Experto = new System.Windows.Forms.RadioButton();
             this.Rb_Personalizado = new System.Windows.Forms.RadioButton();
-            this.size = new System.Windows.Forms.TextBox();
-            this.minesNumber = new System.Windows.Forms.TextBox();
+            this.Tb_columna = new System.Windows.Forms.TextBox();
+            this.Tb_fila = new System.Windows.Forms.TextBox();
+            this.Tb_minas = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -71,27 +72,27 @@ namespace MineSweeper
             this.Rb_Principiante.Text = "Principiante";
             this.Rb_Principiante.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // Rb_Intermedio
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(209, 193);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(94, 19);
-            this.radioButton2.TabIndex = 6;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.Rb_Intermedio.AutoSize = true;
+            this.Rb_Intermedio.Location = new System.Drawing.Point(209, 193);
+            this.Rb_Intermedio.Name = "Rb_Intermedio";
+            this.Rb_Intermedio.Size = new System.Drawing.Size(83, 19);
+            this.Rb_Intermedio.TabIndex = 6;
+            this.Rb_Intermedio.TabStop = true;
+            this.Rb_Intermedio.Text = "Intermedio";
+            this.Rb_Intermedio.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // Rb_Experto
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(209, 235);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(94, 19);
-            this.radioButton3.TabIndex = 7;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.Rb_Experto.AutoSize = true;
+            this.Rb_Experto.Location = new System.Drawing.Point(209, 235);
+            this.Rb_Experto.Name = "Rb_Experto";
+            this.Rb_Experto.Size = new System.Drawing.Size(65, 19);
+            this.Rb_Experto.TabIndex = 7;
+            this.Rb_Experto.TabStop = true;
+            this.Rb_Experto.Text = "Experto";
+            this.Rb_Experto.UseVisualStyleBackColor = true;
             // 
             // Rb_Personalizado
             // 
@@ -104,30 +105,38 @@ namespace MineSweeper
             this.Rb_Personalizado.Text = "Personalizado";
             this.Rb_Personalizado.UseVisualStyleBackColor = false;
             // 
-            // size
+            // Tb_columna
             // 
-            this.size.Location = new System.Drawing.Point(363, 277);
-            this.size.Name = "size";
-            this.size.Size = new System.Drawing.Size(108, 23);
-            this.size.TabIndex = 9;
+            this.Tb_columna.Location = new System.Drawing.Point(454, 278);
+            this.Tb_columna.Name = "Tb_columna";
+            this.Tb_columna.Size = new System.Drawing.Size(108, 23);
+            this.Tb_columna.TabIndex = 9;
             // 
-            // minesNumber
+            // Tb_fila
             // 
-            this.minesNumber.Location = new System.Drawing.Point(503, 277);
-            this.minesNumber.Name = "minesNumber";
-            this.minesNumber.Size = new System.Drawing.Size(100, 23);
-            this.minesNumber.TabIndex = 10;
+            this.Tb_fila.Location = new System.Drawing.Point(337, 277);
+            this.Tb_fila.Name = "Tb_fila";
+            this.Tb_fila.Size = new System.Drawing.Size(100, 23);
+            this.Tb_fila.TabIndex = 10;
+            // 
+            // Tb_minas
+            // 
+            this.Tb_minas.Location = new System.Drawing.Point(584, 278);
+            this.Tb_minas.Name = "Tb_minas";
+            this.Tb_minas.Size = new System.Drawing.Size(108, 23);
+            this.Tb_minas.TabIndex = 11;
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.minesNumber);
-            this.Controls.Add(this.size);
+            this.Controls.Add(this.Tb_minas);
+            this.Controls.Add(this.Tb_fila);
+            this.Controls.Add(this.Tb_columna);
             this.Controls.Add(this.Rb_Personalizado);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.Rb_Experto);
+            this.Controls.Add(this.Rb_Intermedio);
             this.Controls.Add(this.Rb_Principiante);
             this.Controls.Add(this.Bt_Jugar);
             this.Controls.Add(this.label1);
@@ -143,11 +152,12 @@ namespace MineSweeper
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Bt_Jugar;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton Rb_Intermedio;
+        private System.Windows.Forms.RadioButton Rb_Experto;
         private System.Windows.Forms.RadioButton Rb_Personalizado;
-        private System.Windows.Forms.TextBox size;
-        private System.Windows.Forms.TextBox minesNumber;
+        private System.Windows.Forms.TextBox Tb_columna;
+        private System.Windows.Forms.TextBox Tb_fila;
         private System.Windows.Forms.RadioButton Rb_Principiante;
+        private System.Windows.Forms.TextBox Tb_minas;
     }
 }

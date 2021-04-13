@@ -14,6 +14,10 @@ namespace MineSweeper
         [STAThread]
         static void Main()
         {
+            MatrizEnTripleta mat = new MatrizEnTripleta(new Tripleta(3, 3, 1));
+            mat.generarMinas(5);
+            mat.muestraMatrizEnTripletas();
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
