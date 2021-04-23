@@ -10,7 +10,7 @@ namespace MineSweeper
         int n = t.retornaColumna();
         int p = (m*n)+2;
         V = new Tripleta[p];
-        V[0]=t;
+        V[0] = t;
 
         for(int i = 1 ; i <V.Length; i++){
             V[i]= null;
@@ -102,15 +102,17 @@ namespace MineSweeper
 
         }
 
-    public void muestraMatrizEnTripletas(){
+    public string muestraMatrizEnTripletas(){
         int i = 1;
+            string resultado = "";
         Tripleta t = retornaTripleta(0);
         int datos = (int) t.retornaValor();
-        while(i< datos){
-            Console.WriteLine(V[i].retornaFila()+", "+ V[i].retornaColumna() +
-                              ", " + V[i].retornaValor());
+        while(i < datos){
+                resultado += +V[i].retornaFila() + ", " + V[i].retornaColumna() +
+                                  ", " + V[i].retornaValor() + "\n";
             i = i + 1;
         }
+            return resultado + this.retornaTripleta(0).retornaValor();
     }
 
     

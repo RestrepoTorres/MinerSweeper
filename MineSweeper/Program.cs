@@ -14,14 +14,16 @@ namespace MineSweeper
         [STAThread]
         static void Main()
         {
-            MatrizEnTripleta mat = new MatrizEnTripleta(new Tripleta(3, 3, 1));
+            MatrizEnTripleta mat = new MatrizEnTripleta(new Tripleta(3, 3, 0));
             mat.generarMinas(5);
-            mat.muestraMatrizEnTripletas();
+            
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Menu());
+            Menu menu = new Menu(mat.muestraMatrizEnTripletas());
+            Application.Run(menu);
+            
         }
     }
 }

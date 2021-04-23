@@ -3,6 +3,12 @@ namespace MineSweeper
 {
     partial class Menu
     {
+        public Menu(string prueba)
+        {
+            this.InitializeComponent();
+            this.caja.Text = prueba;
+        }
+     
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -38,6 +44,7 @@ namespace MineSweeper
             this.Tb_columna = new System.Windows.Forms.TextBox();
             this.Tb_fila = new System.Windows.Forms.TextBox();
             this.Tb_minas = new System.Windows.Forms.TextBox();
+            this.caja = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -126,11 +133,20 @@ namespace MineSweeper
             this.Tb_minas.Size = new System.Drawing.Size(108, 23);
             this.Tb_minas.TabIndex = 11;
             // 
+            // caja
+            // 
+            this.caja.Location = new System.Drawing.Point(428, 92);
+            this.caja.Name = "caja";
+            this.caja.Size = new System.Drawing.Size(249, 145);
+            this.caja.TabIndex = 12;
+            this.caja.Text = "";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.caja);
             this.Controls.Add(this.Tb_minas);
             this.Controls.Add(this.Tb_fila);
             this.Controls.Add(this.Tb_columna);
@@ -159,5 +175,6 @@ namespace MineSweeper
         private System.Windows.Forms.TextBox Tb_fila;
         private System.Windows.Forms.RadioButton Rb_Principiante;
         private System.Windows.Forms.TextBox Tb_minas;
+        private System.Windows.Forms.RichTextBox caja;
     }
 }

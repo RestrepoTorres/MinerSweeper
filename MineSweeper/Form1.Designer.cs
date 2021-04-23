@@ -17,6 +17,37 @@ namespace MineSweeper
             this.InitializeComponent();
             this.GenerateTable(column, row);
         }
+        private void setNumbers(MatrizEnTripleta mat)
+        {
+            for (int i = 1; i < mat.retornaNumeroTripletas(); i++)
+            {
+                Tripleta tp = mat.retornaTripleta(i);
+                int fila = tp.retornaFila();
+                int columna = tp.retornaColumna();
+                for (int j = -1; j <= 1; i++)
+                {
+                    for (int k = -1; k <= 1; k++)
+                    {
+                        fila += i;
+                        columna += j;
+                        if (k == 0 && j == 0) { continue; }
+                        if (fila >= 0 && fila <= mat.retornaNumeroFilas() && columna >= 0 && columna <= mat.retornaNumeroColumnas())
+                        {
+                            try
+                            {
+                                int valor = int.Parse(this.tableLayoutPanel1.GetControlFromPosition(columna, fila).Text);
+                                valor += 1;
+                                this.tableLayoutPanel1.GetControlFromPosition(columna, fila).Text = string.Format("{0}", valor);
+                            }
+                            catch
+                            {
+                                continue;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
