@@ -156,7 +156,19 @@ namespace MineSweeper
                     cmd.Text = string.Format("({0}, {1})", x, y);         //Finally, add the control to the correct location in the table
                     tableLayoutPanel1.Controls.Add(cmd, x, y);
                 }
+
             }
+            
+            MatrizEnTripleta mat = new MatrizEnTripleta(new Tripleta(row, column, 0));
+           mat.generarMinas(this.mines);
+             
+           for (int i = 1; i <= mines; i++)
+            {
+                Button cmds = new Button();
+                cmds.Text = string.Format("minita");
+                tableLayoutPanel1.Controls.Add(cmds, mat.retornaTripleta(i).retornaFila(), mat.retornaTripleta(i).retornaColumna());
+            }
+
         }
 
 

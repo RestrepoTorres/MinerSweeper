@@ -23,6 +23,7 @@ namespace MineSweeper
             Application.SetCompatibleTextRenderingDefault(false);
             Menu menu = new Menu(mat.muestraMatrizEnTripletas());
             Application.Run(menu);
+
             
         }
     }
