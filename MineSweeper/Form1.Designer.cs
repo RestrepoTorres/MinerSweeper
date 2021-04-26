@@ -5,6 +5,7 @@ namespace MineSweeper
     partial class Form1
     {
         int column, row, mines;
+        MatrizEnTripleta mat;
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -14,35 +15,47 @@ namespace MineSweeper
             this.row = row;
             this.column = column;
             this.mines = mines;
+            this.mat = new MatrizEnTripleta(new Tripleta(row, column, 0));
+            this.mat.generarMinas(mines);
             this.InitializeComponent();
             this.GenerateTable(column, row);
+            this.minar();
+            this.setNumbers();
         }
-        private void setNumbers(MatrizEnTripleta mat)
+        
+       public void minar()
         {
-            for (int i = 1; i < mat.retornaNumeroTripletas(); i++)
+            for (int i = 1; i <= this.mat.retornaNumeroTripletas(); i++)
+
+            {             
+                tableLayoutPanel1.GetControlFromPosition(this.mat.retornaTripleta(i).retornaColumna() - 1, this.mat.retornaTripleta(i).retornaFila() - 1).Text = "X";
+            }
+        }      
+           
+    private void setNumbers()
+        {
+            int fila, columna;
+         for (int m = 1; m <= this.mines; m++)
             {
-                Tripleta tp = mat.retornaTripleta(i);
-                int fila = tp.retornaFila();
-                int columna = tp.retornaColumna();
-                for (int j = -1; j <= 1; i++)
+                for (int n = -1; n <= 1; n++)
                 {
-                    for (int k = -1; k <= 1; k++)
+                    for (int o = -1; o <= 1; o++)
                     {
-                        fila += i;
-                        columna += j;
-                        if (k == 0 && j == 0) { continue; }
-                        if (fila >= 0 && fila <= mat.retornaNumeroFilas() && columna >= 0 && columna <= mat.retornaNumeroColumnas())
+                         fila = mat.retornaTripleta(m).retornaFila() - 1;
+                         columna = mat.retornaTripleta(m).retornaColumna() - 1;
+                        try
                         {
-                            try
+
+                            Control control = tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o);
+                            if (control != null && tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o).Text != "X")
                             {
-                                int valor = int.Parse(this.tableLayoutPanel1.GetControlFromPosition(columna, fila).Text);
-                                valor += 1;
-                                this.tableLayoutPanel1.GetControlFromPosition(columna, fila).Text = string.Format("{0}", valor);
+                                int numeroActual = int.Parse(tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o).Text) + 1;
+                                tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o).Text = numeroActual.ToString();
                             }
-                            catch
-                            {
-                                continue;
-                            }
+                        }
+                        catch
+                        {
+                            continue;
                         }
                     }
                 }
@@ -153,22 +166,14 @@ namespace MineSweeper
 
                     //Create the control, in this case we will add a button
                     Button cmd = new Button();
-                    cmd.Text = string.Format("({0}, {1})", x, y);         //Finally, add the control to the correct location in the table
+                    cmd.Text = "0";       //Finally, add the control to the correct location in the table
                     tableLayoutPanel1.Controls.Add(cmd, x, y);
                 }
 
             }
-            
-            MatrizEnTripleta mat = new MatrizEnTripleta(new Tripleta(row, column, 0));
-           mat.generarMinas(this.mines);
-             
-           for (int i = 1; i <= mines; i++)
-            {
-                Button cmds = new Button();
-                cmds.Text = string.Format("minita");
-                tableLayoutPanel1.Controls.Add(cmds, mat.retornaTripleta(i).retornaFila(), mat.retornaTripleta(i).retornaColumna());
-            }
 
+
+            this.minar();
         }
 
 
