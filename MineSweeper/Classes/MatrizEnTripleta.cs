@@ -74,7 +74,7 @@ namespace MineSweeper
     }
         public bool posicion(int fila, int columna)
         {
-            for (int i = 1; i < this.retornaNumeroTripletas(); i++)
+            for (int i = 1; i <= this.retornaNumeroTripletas(); i++)
             {
                 if (this.V[i].retornaFila() == fila & this.V[i].retornaColumna() == columna)
                 {
@@ -107,7 +107,7 @@ namespace MineSweeper
             string resultado = "";
         Tripleta t = retornaTripleta(0);
         int datos = (int) t.retornaValor();
-        while(i < datos){
+        while(i <= datos){
                 resultado += +V[i].retornaFila() + ", " + V[i].retornaColumna() +
                                   ", " + V[i].retornaValor() + "\n";
             i = i + 1;
