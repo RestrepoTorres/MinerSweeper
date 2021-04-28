@@ -10,14 +10,16 @@ namespace MineSweeper
 {
     public partial class Fin : Form
     {
-        public Fin()
+        public Fin(string label)
         {
+            string labelText = label;
             InitializeComponent();
+            label1.Text = labelText;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            Environment.Exit(0);
         }
     }
 }
