@@ -21,9 +21,13 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit felis suscipit dis, tempu
 
 #### code
 
-    ``` csharp
-    for (int i = 0 ; i < 10; i++)
-    {
-      // Code to execute.
-    }
-    ```
+  ```
+
+if(gato.Miaus()){
+  plato.ServirComida();
+  }
+  else{
+  gato.Acariciar();
+  }
+  
+``
