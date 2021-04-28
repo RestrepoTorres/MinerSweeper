@@ -1,4 +1,4 @@
-#Gracias Mario, pero la princesa esta en otro castillo
+# Gracias Mario, pero la princesa esta en otro castillo
 
 Este repositorio solo contiene la página web de los manuales.
 
