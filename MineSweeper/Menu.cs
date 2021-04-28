@@ -46,6 +46,8 @@ namespace MineSweeper
                 Juego.Show();
             }
         }
-        }
+
+       
+    }
     }
 

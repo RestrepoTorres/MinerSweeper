@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System.Drawing;
 namespace MineSweeper
 
 {
@@ -30,8 +31,9 @@ namespace MineSweeper
             {             
                 tableLayoutPanel1.GetControlFromPosition(this.mat.retornaTripleta(i).retornaColumna() - 1, this.mat.retornaTripleta(i).retornaFila() - 1).Text = "X";
             }
-        }      
-           
+        }    
+        
+   
     private void setNumbers()
         {
             int fila, columna;
@@ -75,6 +77,7 @@ namespace MineSweeper
             }
             base.Dispose(disposing);
         }
+      
 
         #region Windows Form Designer generated code
 
@@ -101,17 +104,17 @@ namespace MineSweeper
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(736, 344);
             this.tableLayoutPanel1.TabIndex = 0;
+            
             // 
             // label1
             // 
@@ -137,7 +140,43 @@ namespace MineSweeper
 
         }
 
+
+        /*private void GenerateTable(int columnCount, int rowCount)
+        {
+            //Clear out the existing controls, we are generating a new table layout
+            //tableLayoutPanel1.Controls.Clear();
+
+            //Clear out the existing row and column styles
+            //tableLayoutPanel1.ColumnStyles.Clear();
+            //tableLayoutPanel1.RowStyles.Clear();
+            
+
+            tableLayoutPanel1.ColumnCount = columnCount;
+            tableLayoutPanel1.RowCount = rowCount;
+
+            for (int x = 0; x < columnCount; x++)
+            {
+                tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+
+            }
+
+
+
+            TableLayoutColumnStyleCollection styles = this.tableLayoutPanel1.ColumnStyles;
+            foreach (ColumnStyle style in styles)
+            {
+                style.SizeType = SizeType.AutoSize;
+                //style.Width = 50;   
+            }
+            TableLayoutRowStyleCollection styles2 = this.tableLayoutPanel1.RowStyles;
+            foreach (RowStyle style in styles2)
+            {
+                style.SizeType = SizeType.AutoSize;
+                //style.Width = 50;   
+            }
+        }*/
         #endregion
+
         private void GenerateTable(int columnCount, int rowCount)
         {
             //Clear out the existing controls, we are generating a new table layout
@@ -145,7 +184,7 @@ namespace MineSweeper
 
             //Clear out the existing row and column styles
             tableLayoutPanel1.ColumnStyles.Clear();
-            tableLayoutPanel1.RowStyles.Clear();
+           tableLayoutPanel1.RowStyles.Clear();
 
             //Now we will generate the table, setting up the row and column counts first
             tableLayoutPanel1.ColumnCount = columnCount;
@@ -162,19 +201,39 @@ namespace MineSweeper
                     if (x == 0)
                     {
                         tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-                    }
+                   }
 
                     //Create the control, in this case we will add a button
                     Button cmd = new Button();
+                    cmd.Tag = false;
+                    cmd.ForeColor = System.Drawing.Color.Green;
+                    cmd.BackColor = System.Drawing.Color.Silver;
+                    cmd.Dock = System.Windows.Forms.DockStyle.Fill;
+                    cmd.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Mouse_Click);
                     cmd.Text = "0";       //Finally, add the control to the correct location in the table
                     tableLayoutPanel1.Controls.Add(cmd, x, y);
                 }
 
             }
+            tableLayoutPanel1.AutoScroll = true;
 
 
-            this.minar();
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         private Panel panel1;

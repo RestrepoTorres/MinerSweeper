@@ -45,6 +45,9 @@ namespace MineSweeper
             this.Tb_fila = new System.Windows.Forms.TextBox();
             this.Tb_minas = new System.Windows.Forms.TextBox();
             this.caja = new System.Windows.Forms.RichTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -141,11 +144,31 @@ namespace MineSweeper
             this.caja.TabIndex = 12;
             this.caja.Text = "";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Location = new System.Drawing.Point(31, 334);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 13;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(200, 100);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.caja);
             this.Controls.Add(this.Tb_minas);
             this.Controls.Add(this.Tb_fila);
@@ -158,6 +181,7 @@ namespace MineSweeper
             this.Controls.Add(this.label1);
             this.Name = "Menu";
             this.Text = "Menu";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,7 +191,6 @@ namespace MineSweeper
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Bt_Jugar;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton Rb_Intermedio;
         private System.Windows.Forms.RadioButton Rb_Experto;
         private System.Windows.Forms.RadioButton Rb_Personalizado;
@@ -176,5 +199,7 @@ namespace MineSweeper
         private System.Windows.Forms.RadioButton Rb_Principiante;
         private System.Windows.Forms.TextBox Tb_minas;
         private System.Windows.Forms.RichTextBox caja;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
     }
 }
