@@ -1,12 +1,11 @@
 ## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/RestrepoTorres/MinerSweeper/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Lorem ipsum dolor sit amet consectetur adipiscing elit felis suscipit dis, tempus vulputate molestie leo tincidunt at id dignissim praesent. Magna mattis praesent fermentum imperdiet litora congue condimentum lacinia semper, hendrerit potenti lobortis interdum parturient torquent vehicula mauris molestie tellus, morbi ad tempus dignissim feugiat accumsan pharetra erat. Pharetra ullamcorper ac taciti nam quam sociosqu sapien malesuada, ridiculus aliquam etiam urna bibendum nullam magna lectus, euismod velit blandit accumsan duis ultrices tellus.
 
 ### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Lorem ipsum dolor sit amet consectetur adipiscing elit felis suscipit dis, tempus vulputate molestie leo tincidunt at id dignissim praesent. 
 
 ```markdown
 Syntax highlighted code block
