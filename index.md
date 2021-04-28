@@ -20,8 +20,7 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit felis suscipit dis, tempu
 <img src="https://i.imgur.com/NwF7IG1.jpeg"  height="500">
 
 #### code
-```
-
+```csharp
 if(gato.Miaus()){
   plato.ServirComida();
   }
