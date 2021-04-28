@@ -17,7 +17,6 @@ Lorem ipsum dolor sit amet consectetur adipiscing elit felis suscipit dis, tempu
 
 
 #### images
-<img src="https://i.imgur.com/NwF7IG1.jpeg"height="100">
 <img src="https://i.imgur.com/NwF7IG1.jpeg" width="100" height="100">
 
 #### code
