@@ -26,19 +26,54 @@ namespace MineSweeper
             this.setNumbers();
         }
         
-      
+       public void minar()
+        {
+            for (int i = 1; i <= this.mat.retornaNumeroTripletas(); i++)
+
+            {             
+                tableLayoutPanel1.GetControlFromPosition(this.mat.retornaTripleta(i).retornaColumna() - 1, this.mat.retornaTripleta(i).retornaFila() - 1).Text = "X";
+            }
+        }    
         
    
+    private void setNumbers()
+        {
+            int fila, columna;
+         for (int m = 1; m <= this.mines; m++)
+            {
+                for (int n = -1; n <= 1; n++)
+                {
+                    for (int o = -1; o <= 1; o++)
+                    {
+                         fila = mat.retornaTripleta(m).retornaFila() - 1;
+                         columna = mat.retornaTripleta(m).retornaColumna() - 1;
+                        try
+                        {
 
+                            Control control = tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o);
+                            if (control != null && tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o).Text != "X")
+                            {
+                                int numeroActual = int.Parse(tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o).Text) + 1;
+                                tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o).Text = numeroActual.ToString();
+                            }
+                        }
+                        catch
+                        {
+                            continue;
+                        }
+                    }
+                }
+            }
+        }
 
         private void GenerateTable(int columnCount, int rowCount)
         {
-            //limpia el tablelayout que se crea inicialmente con la tabla
+            //limpiar la tabla
             tableLayoutPanel1.Controls.Clear();
             tableLayoutPanel1.ColumnStyles.Clear();
             tableLayoutPanel1.RowStyles.Clear();
 
-            //establece el número de filas y columnas de acuerdo al tamaño que s
+        
             tableLayoutPanel1.ColumnCount = columnCount;
             tableLayoutPanel1.RowCount = rowCount;
 
@@ -59,8 +94,8 @@ namespace MineSweeper
                     Button cmd = new Button();
                     cmd.Size = new System.Drawing.Size(30, 30);
                     cmd.Tag = false;
-                    cmd.ForeColor = System.Drawing.Color.Silver;
-                    cmd.BackColor = System.Drawing.Color.Silver;
+                    cmd.ForeColor = System.Drawing.Color.Green;
+                    cmd.BackColor = System.Drawing.Color.Green;
 
                     cmd.Dock = System.Windows.Forms.DockStyle.Fill;
                     cmd.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Mouse_Click);
@@ -72,46 +107,6 @@ namespace MineSweeper
             tableLayoutPanel1.AutoScroll = true;
 
 
-        }
-
-        private void setNumbers()
-        {
-            int fila, columna;
-            for (int m = 1; m <= this.mines; m++)
-            {
-                for (int n = -1; n <= 1; n++)
-                {
-                    for (int o = -1; o <= 1; o++)
-                    {
-                        fila = mat.retornaTripleta(m).retornaFila() - 1;
-                        columna = mat.retornaTripleta(m).retornaColumna() - 1;
-                        try
-                        {
-
-                            Control control = tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o);
-                            if (control != null && tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o).Text != "X")
-                            {
-                                int numeroActual = int.Parse(tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o).Text) + 1;
-                                tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o).Text = numeroActual.ToString();
-                            }
-                        }
-                        catch
-                        {
-                            continue;
-                        }
-                    }
-                }
-            }
-        }
-
-
-        public void minar()
-        {
-            for (int i = 1; i <= this.mat.retornaNumeroTripletas(); i++)
-
-            {
-                tableLayoutPanel1.GetControlFromPosition(this.mat.retornaTripleta(i).retornaColumna() - 1, this.mat.retornaTripleta(i).retornaFila() - 1).Text = "X";
-            }
         }
 
 

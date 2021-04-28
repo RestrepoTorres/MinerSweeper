@@ -15,22 +15,24 @@ namespace MineSweeper
             if (Rb_Principiante.Checked)
             {
                 this.Visible = false;
-                Form1 Juego = new Form1(8,8,10);
+                Form1 Juego = new Form1(8, 8, 10);
                 Juego.Show();
-                
+
             }
             else if (Rb_Intermedio.Checked)
             {
                 this.Visible = false;
                 Form1 Juego = new Form1(16, 16, 40);
+                Juego.Size = new System.Drawing.Size(670, 690);
                 Juego.Show();
             }
             else if (Rb_Experto.Checked)
             {
                 this.Visible = false;
                 Form1 Juego = new Form1(16, 30, 99);
+                Juego.Size = new System.Drawing.Size(1210, 685);
                 Juego.Show();
-               
+
             }
             else if (Rb_Personalizado.Checked)
             {
@@ -38,12 +40,12 @@ namespace MineSweeper
                 int columna = int.Parse(Tb_columna.Text);
                 int minas = int.Parse(Tb_minas.Text);
 
-                if(minas > 0 && minas < columna * fila)
+                if (minas > 0 && minas < columna * fila)
                 {
                     this.Visible = false;
                     Form1 Juego = new Form1(columna, fila, minas);
                     Juego.Show();
-                }    
+                }
                 else
                 {
                     label2.Text = "Por favor ingresa una cantidad de minas válida.";
