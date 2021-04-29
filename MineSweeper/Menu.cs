@@ -57,7 +57,7 @@ namespace MineSweeper
         {
             
             string root = Application.StartupPath;
-            Image bomba = System.Drawing.Image.FromFile("Img/Bomb.png");
+            Image bomba = System.Drawing.Image.FromFile("../../../Img/Bomb.png");
             this.BackColor = System.Drawing.Color.Gray;
             this.BackgroundImage = bomba;
         }
