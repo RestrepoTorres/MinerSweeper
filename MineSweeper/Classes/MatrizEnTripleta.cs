@@ -3,6 +3,11 @@ namespace MineSweeper
 {
     public class MatrizEnTripleta
     {
+        /*
+         Aparte de los métodos vistos en el curso para matrices en tripletas, se creo el método 
+         llamado generarCoordenadasAleatorias
+
+         */
      private Tripleta []V; 
      public MatrizEnTripleta(Tripleta t){
          
@@ -83,19 +88,22 @@ namespace MineSweeper
             }
             return false;
         }
-    public void generarMinas(int cantidadMinas)
+
+
+    //Genera n numero de coordenadas aleatorias sin repetir
+    public void generarCoordenadasAleatorias(int coordenadasAGenerar)
         {
             Random random = new Random();
             int fila;
             int columna;
-            int numeroMinasActual = 0;
-            while(numeroMinasActual < cantidadMinas) { 
+            int i = 0;
+            while(i < coordenadasAGenerar) { 
                 fila = random.Next(1, this.retornaNumeroFilas() + 1);
                 columna = random.Next(1, this.retornaNumeroColumnas() + 1);
                 if(!this.posicion(fila, columna))
                 {
                     this.insertaTripleta(new Tripleta(fila, columna, 0));
-                    numeroMinasActual++;
+                    i++;
                 }
             }
             

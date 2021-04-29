@@ -1,7 +1,10 @@
 namespace MineSweeper
 {
     public class NodoDoble
-    {
+    {    /*
+         No se crearon métodos adicionales para nodos dobles aparte
+         de los vistos en lógica 2
+         */
         private object dato;
         private NodoDoble ligaIzquierda, ligaDerecha;
         public NodoDoble(object dato)

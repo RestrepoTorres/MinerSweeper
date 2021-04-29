@@ -1,7 +1,12 @@
 namespace MineSweeper
 {
     public class Tripleta
-    {
+    {   
+        /*
+         No se crearon métodos adicionales para Tripletas aparte
+         de los vistos en el curso
+         */
+
         private int fila, columna;
         private object valor;
 

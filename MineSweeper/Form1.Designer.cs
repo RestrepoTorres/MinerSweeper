@@ -5,94 +5,80 @@ namespace MineSweeper
 {
     partial class Form1
     {
-        int column, row, mines, casillas;
+        /*
+         * Tener en cuenta lo siguiente:
+         * - las minas se representan como una X
+         * - casillas a destapar se defina como : (filas * columnas) - (casillas previamente destapadas)
+         * -  El Programa principal finaliza cuando:
+         *      a. casillasPorDestar = 0
+         *      b. se destapa una mina y por tanto casillasPorDestapar > 0
+         */
+        int numeroColumnas, numeroFilas, numeroDeMinas, casillasPorDestapar;
       
-        MatrizEnTripleta mat;
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        /// 
-        public Form1(int row, int column, int mines)
+        MatrizEnTripleta matrizBombas;
+
+        /*Este constructor realiza lo siguiente:
+          - crea un tablelayout del tamaño filas,columnas
+          - genera n numero de coordenadas aleatorias que seran almacenadas en una matriz dispersa
+          - asigna el número correspondiente a las celdas aledañas a minas
+          - genera la tabla donde graficamente se podra jugar
+         */
+        public Form1(int numeroFilas, int numeroColumnas, int numeroDeMinas)
         {
-            this.row = row;
-            this.column = column;
-            this.mines = mines;
-            this.casillas = row * column - mines;
-            this.mat = new MatrizEnTripleta(new Tripleta(row, column, 0));
-            this.mat.generarMinas(mines);
+            this.numeroFilas = numeroFilas;
+            this.numeroColumnas = numeroColumnas;
+            this.numeroDeMinas = numeroDeMinas;
+            this.casillasPorDestapar = numeroFilas * numeroColumnas - numeroDeMinas;
+            this.matrizBombas = new MatrizEnTripleta(new Tripleta(numeroFilas, numeroColumnas, 0));
+            this.matrizBombas.generarCoordenadasAleatorias(numeroDeMinas);
             this.InitializeComponent();
-            this.GenerateTable(column, row);
-            this.minar();
-            this.setNumbers();
+            this.GenerarTabla(numeroColumnas, numeroFilas);
+            this.Minar();
+            this.AsignarNumeros();
         }
-        
-      
-        
-   
 
-
-        private void GenerateTable(int columnCount, int rowCount)
+        private Button GenerarBoton()
         {
-            //limpia el tablelayout que se crea inicialmente con la tabla
-            tableLayoutPanel1.Controls.Clear();
-            tableLayoutPanel1.ColumnStyles.Clear();
-            tableLayoutPanel1.RowStyles.Clear();
-
-            //establece el número de filas y columnas de acuerdo al tamaño que s
-            tableLayoutPanel1.ColumnCount = columnCount;
-            tableLayoutPanel1.RowCount = rowCount;
-
-            for (int x = 0; x < columnCount; x++)
-            {
-                //First add a column
-                tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
-
-                for (int y = 0; y < rowCount; y++)
-                {
-                    //Next, add a row.  Only do this when once, when creating the first column
-                    if (x == 0)
-                    {
-                        tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-                    }
-
-                    //Create the control, in this case we will add a button
-                    Button cmd = new Button();
-                    cmd.Size = new System.Drawing.Size(30, 30);
-                    cmd.Tag = false;
-                    cmd.ForeColor = System.Drawing.Color.Silver;
-                    cmd.BackColor = System.Drawing.Color.Silver;
-
-                    cmd.Dock = System.Windows.Forms.DockStyle.Fill;
-                    cmd.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Mouse_Click);
-                    cmd.Text = "0";       //Finally, add the control to the correct location in the table
-                    tableLayoutPanel1.Controls.Add(cmd, x, y);
-                }
-
-            }
-            tableLayoutPanel1.AutoScroll = true;
-
-
+            Button cmd = new Button();
+            cmd.Size = new System.Drawing.Size(30, 30);
+            cmd.Tag = false;
+            cmd.ForeColor = System.Drawing.Color.Silver;
+            cmd.BackColor = System.Drawing.Color.Silver;
+            cmd.Dock = System.Windows.Forms.DockStyle.Fill;
+            cmd.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Mouse_Click);
+            cmd.Text = "0";
+            return cmd;
         }
 
-        private void setNumbers()
+
+        //método que asigna los números que van al rededor de las minas 
+        private void AsignarNumeros()
         {
             int fila, columna;
-            for (int m = 1; m <= this.mines; m++)
+            for (int i = 1; i <= this.numeroDeMinas; i++)
             {
-                for (int n = -1; n <= 1; n++)
+                //En el ciclo anidado siguiente se recorre todas las posibles combinaciones de ((x+i),(y+j))
+                //que son las celdas circundantes a minas y se les asigna un valor =+1
+                for (int j = -1; j <= 1; j++)
                 {
-                    for (int o = -1; o <= 1; o++)
+                    for (int k = -1; k <= 1; k++)
                     {
-                        fila = mat.retornaTripleta(m).retornaFila() - 1;
-                        columna = mat.retornaTripleta(m).retornaColumna() - 1;
+                        //la cuenta en el tablelayout empieza desde 0, por eso se resta una unidad
+                        fila = matrizBombas.retornaTripleta(i).retornaFila() - 1;
+                        columna = matrizBombas.retornaTripleta(i).retornaColumna() - 1;
+
+                        //la unica excepción posible se da en los bordes de la matriz al intentar acceder a posiciones menores a 
+                        //0 ó mayores al número de columnas o filas, esto se controla con este try-catch
                         try
                         {
+                            // Recordar que "X" es la forma de representar las minas, por tanto a la celda se le suma una
+                            //unidad solo si el valor del texto del boton es diferente de 0
 
-                            Control control = tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o);
-                            if (control != null && tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o).Text != "X")
+                            Control control = tableLayoutPanel1.GetControlFromPosition(columna + j, fila + k);
+                            if (control != null && tableLayoutPanel1.GetControlFromPosition(columna + j, fila + k).Text != "X")
                             {
-                                int numeroActual = int.Parse(tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o).Text) + 1;
-                                tableLayoutPanel1.GetControlFromPosition(columna + n, fila + o).Text = numeroActual.ToString();
+                                int numeroActual = int.Parse(tableLayoutPanel1.GetControlFromPosition(columna + j, fila + k).Text) + 1;
+                                tableLayoutPanel1.GetControlFromPosition(columna + j, fila + k).Text = numeroActual.ToString();
                             }
                         }
                         catch
@@ -105,22 +91,43 @@ namespace MineSweeper
         }
 
 
-        public void minar()
+        /*Asocia cada elemento de la matriz dispersa con una coordenada del tablelayout
+        Usamos el simbolo "X" para representar las minas.*/
+        public void Minar()
         {
-            for (int i = 1; i <= this.mat.retornaNumeroTripletas(); i++)
-
+            for (int i = 1; i <= this.matrizBombas.retornaNumeroTripletas(); i++)
             {
-                tableLayoutPanel1.GetControlFromPosition(this.mat.retornaTripleta(i).retornaColumna() - 1, this.mat.retornaTripleta(i).retornaFila() - 1).Text = "X";
+                tableLayoutPanel1.GetControlFromPosition(this.matrizBombas.retornaTripleta(i).retornaColumna() - 1, this.matrizBombas.retornaTripleta(i).retornaFila() - 1).Text = "X";
+            }
+        }
+
+        //genera la tabla donde se juega graficamente
+        private void GenerarTabla(int columnCount, int rowCount)
+        {
+            //se limpia el tablelayout que se crea inicialmente con la tabla
+            tableLayoutPanel1.Controls.Clear();
+            tableLayoutPanel1.ColumnStyles.Clear();
+            tableLayoutPanel1.RowStyles.Clear();
+
+            //se establece el número de filas y columnas de acuerdo al tamaño que se haya establecido
+            tableLayoutPanel1.ColumnCount = columnCount;
+            tableLayoutPanel1.RowCount = rowCount;
+            tableLayoutPanel1.AutoScroll = true;
+
+            //Se inserta un boton en las coordenadas deseada
+            for (int x = 0; x < columnCount; x++)
+            {
+                for (int y = 0; y < rowCount; y++)
+                {
+                    Button cmd = GenerarBoton();
+                    tableLayoutPanel1.Controls.Add(cmd, x, y);
+                }
             }
         }
 
 
-        private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        private System.ComponentModel.IContainer components = null;
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))

@@ -55,7 +55,9 @@ namespace MineSweeper
 
         private void Menu_Load(object sender, EventArgs e)
         {
-            Image bomba = System.Drawing.Image.FromFile("C:\\Users\\axels\\source\\repos\\MineSweeper\\MineSweeper\\Img\\Bomb.png");
+            
+            string root = Application.StartupPath;
+            Image bomba = System.Drawing.Image.FromFile("Img/Bomb.png");
             this.BackColor = System.Drawing.Color.Gray;
             this.BackgroundImage = bomba;
         }

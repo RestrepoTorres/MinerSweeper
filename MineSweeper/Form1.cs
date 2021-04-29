@@ -16,6 +16,13 @@ namespace MineSweeper
             InitializeComponent();
         }
 
+        /*en este método se destapa una celda. Hay tres posibilidades:
+         1-La celda es una mina: Game over, finaliza la ejecución del programa principal.
+         2-La celda NO es aledaña a una mina: se ejecuta recursivamente el método Destapar() con las celdas vecinas.
+         3-La celda es aledaña a una mina o más: en cuyo caso solamente se muestra el valor celda clickeada es decir 
+            número.
+         */
+
         private void Destapar(Button button)
         {
 
@@ -24,19 +31,21 @@ namespace MineSweeper
             {
                 button.Tag = true;
                 TableLayoutPanelCellPosition coordenadas = tableLayoutPanel1.GetCellPosition(button);
-
+                //Caso 1, celda que es una mina
                 if (button.Text == "X")
                 {
-                    Fin fin = new Fin("Fin del Juego");
+                    Fin fin = new Fin("Has detonado una mina.Fin del juego :c");
                     fin.Show();
                     this.Close();
                     button.Text = "💣";
                     button.ForeColor = System.Drawing.Color.Red;
                     button.BackColor = System.Drawing.Color.Gray;
                 } 
+
+                //Caso 2, celda que no es aledaña a una mina
                 if (button.Text == "0")
                 {
-                    this.casillas -= 1;
+                    this.casillasPorDestapar -= 1;
                     button.BackColor = System.Drawing.Color.White;
                     for (int n = -1; n <= 1; n++)
                     {
@@ -55,9 +64,13 @@ namespace MineSweeper
                         }
                     }     
                 }
-                else{
-                    this.casillas -= 1;
 
+                //Caso 3, celda que es aledaña a una mina
+                else
+                {
+                    this.casillasPorDestapar -= 1;
+
+                    //Cada número posible tiene su respectivo color
                     switch (button.Text)
                     {
                         case "1":
@@ -97,9 +110,9 @@ namespace MineSweeper
                      
                 }  
             }
-            if(casillas == 0)
+            if(casillasPorDestapar == 0)
             {
-                Fin ganador = new Fin("Ganaste");
+                Fin ganador = new Fin("Has limpiado el terreno de minas, felicitaciones, Ganaste :)");
                 ganador.Show();
                 this.Close();
             }
@@ -109,38 +122,9 @@ namespace MineSweeper
         private void Mouse_Click(object sender, MouseEventArgs e)
         {
             Button button = sender as Button;
-            switch (e.Button)
-            {
-                case MouseButtons.Left:  
-                    Destapar(button);
-                    break;
-                 
-            case MouseButtons.Right:
-                    bandera(button);
-                    break;
-            }
+                    Destapar(button);      
         }
 
-        private void bandera(Button button)
-        {
-            if (button != null && !Convert.ToBoolean(button.Tag))
-            {
-                if (button.ForeColor ==  System.Drawing.Color.Green )
-                {
-                    button.ForeColor = System.Drawing.Color.Silver;
-                    button.BackColor = System.Drawing.Color.Silver;
-                }
-                else
-                {
-                    button.ForeColor = System.Drawing.Color.Green;
-                    button.BackColor = System.Drawing.Color.Green;
-                }
-
-
-            }
-
-
-        }
 
 
     }

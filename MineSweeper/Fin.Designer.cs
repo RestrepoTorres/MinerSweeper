@@ -44,7 +44,7 @@ namespace MineSweeper
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(45, 72);
+            this.button1.Location = new System.Drawing.Point(141, 87);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 23);
             this.button1.TabIndex = 1;
@@ -56,7 +56,7 @@ namespace MineSweeper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(179, 122);
+            this.ClientSize = new System.Drawing.Size(371, 122);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "Fin";
