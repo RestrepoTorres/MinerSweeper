@@ -26,6 +26,7 @@ El jugador gana la partida si ha descubierto todas las celdas que no contienen m
 *nota todas las rutas son relativas a la raíz del proyecto
 
 Los principales y carpetas archivos que componen el proyecto son:
+
 **MineSweeper/Classes/** : en esta carpeta se encuentran los archivos MatrizEnTripleta.cs , NodoDoble.cs y Tripleta.cs que son exactamente iguales a los vistos en la asignatura a excepción de de MatrizEnTripleta.cs donde se agrega dos métodos extras que serán explicado posteriormente.
 **MineSweeper/MenuDesigner.cs**:   en este archivo se programa el menú de selección de dificultad.
 
@@ -39,7 +40,7 @@ Los principales y carpetas archivos que componen el proyecto son:
 * GenerarBoton
 * AsignarNumeros
 * Minar
-*¨GenerarTabla
+* GenerarTabla
 
 Estos cuatro métodos serán explicados con detalle más adelante.
 
@@ -64,7 +65,7 @@ Por su parte el código y métodos que se encuentran en los archivos:
 
 No será explicado por ser exactamente igual al desarrollado en el curso Lógica II y Lógica III
 
-## MineSweeper/Classes/MatrizEnTripleta.cs
+### MineSweeper/Classes/MatrizEnTripleta.cs
 A parte de lo visto en el curso en este archivo se crean dos métodos que será explicado a continuación.
 
 **Posición**: Este método verifica si las coordenadas de la tripleta ingresada como parámetro ya se encuentran en la matriz dispersa, esto con el fin de evitar de sobreescribir una tripleta o de tener datos repetidos.
@@ -80,7 +81,11 @@ A parte de lo visto en el curso en este archivo se crean dos métodos que será 
             }
             return false;
 ```
+
+
 **GenerarCoordenadasAleatorias**: En este método se crea un determinado número de tripletas con coordenadas aleatorias y sin repetir
+
+
 ```csharp
  public void generarCoordenadasAleatorias(int coordenadasAGenerar)
         {
@@ -100,7 +105,8 @@ A parte de lo visto en el curso en este archivo se crean dos métodos que será 
         }
 ```
 
-## MineSweeper/Form1Designer.cs: 
+
+### MineSweeper/Form1Designer.cs: 
 **GenerarBoton**:Este método crea botones con tamaños y colores predefinidos, también se hace uso del atributo “tag” para almacenar el estado del botón, es decir, si este se encuentra actualmente destapado o no, finalmente se suscriben los botones creados al evento “Mouse_Click” que se encarga de la acción al dar click izquierdo sobre el control.
 
 ```csharp
@@ -118,7 +124,11 @@ private Button GenerarBoton()
         }
 ```
 
+
+
 **AsignarNumeros**:Este método recorre todas las celdas de la cuadrícula del juego y al encontrarse con una mina suma uno al valor de las 8 casillas inmediatamente adyacentes a esta.
+
+
 ```csharp
 private void AsignarNumeros()
         {
@@ -159,7 +169,10 @@ private void AsignarNumeros()
         }
 ```
 
+
 **Minar**:Este método selecciona celdas de la cuadrícula del juego al azar y les pone una mina, esto se repite según la cantidad de minas de la dificultad.
+
+
 ```csharp
 public void Minar()
         {
@@ -169,7 +182,11 @@ public void Minar()
             }
         }
 ```
+
+
 **GenerarTabla**:Este método se encarga de crear la cuadrícula de juego según las dimensiones de la dificultad seleccionada.
+
+
 ```csharp
 private void GenerarTabla(int columnCount, int rowCount)
         {
@@ -195,7 +212,10 @@ private void GenerarTabla(int columnCount, int rowCount)
         }
 ```
 
+
 **Form1**: Es el método constructor tiene como parámetros las dimensiones de la cuadrícula y el número de minas y después de esto se genera la cuadrícula de juego, se ponen las minas en celdas aleatorias y finalmente se asignan los números a las celdas que tienen minas en sus alrededores.
+
+
 ```csharp
 public Form1(int numeroFilas, int numeroColumnas, int numeroDeMinas)
         {
@@ -212,12 +232,14 @@ public Form1(int numeroFilas, int numeroColumnas, int numeroDeMinas)
         }
 ```
 
-## MineSweeper/Form1.cs:
+
+### MineSweeper/Form1.cs:
 
 **Destapar**: Este método se activa cuando se hace clic en una de las celdas que componen el  tablero, cuando esto sucede se revela el contenido de la celda, este contenido puede ser uno de las tres siguientes clases:
 * **La celda es una mina**: Se llama a la pantalla de Game over y  finaliza la ejecución del programa.
 * **La celda NO es aledaña a una mina**: se muestra el contenido de la celda (un espacio vacío en este caso) y ejecuta recursivamente el método Destapar() con las celdas vecinas. Cada vez se resta 1 al número de celdas restantes por destapar para ganar.
 * **La celda es aledaña a una mina o más**: solamente se muestra el valor de la celda clickeada es decir número, cada número tiene su respectivo color.
+
 
 ```csharp
   private void Destapar(Button button)
@@ -316,25 +338,8 @@ public Form1(int numeroFilas, int numeroColumnas, int numeroDeMinas)
         }
 ```
 
-### Ejemplos
 
-
-#### links
-[link example](https://github.com/RestrepoTorres/MinerSweeper/settings/pages)
 
 
 #### images
 <img src="https://i.imgur.com/NwF7IG1.jpeg"  height="500">
-
-#### code
-
-```csharp
-
-  if(gato.Miaus()){
-  plato.ServirComida();
-  }
-  else{
-  gato.Acariciar();
-  }
-  
-```
