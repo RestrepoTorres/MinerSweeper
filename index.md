@@ -13,7 +13,7 @@ Después de seleccionar una dificultad válida, el jugador deberá presionar el 
 
 
 
-Después de dar click al botón jugar con una opción válida de dificultad, se cerrará esta ventana y aparecerá en pantalla la ventana de juego, la cual consta de una cuadrícula con una cantidad de celdas grises según la dificultad seleccionada en la ventana anterior. \\
+Después de dar click al botón jugar con una opción válida de dificultad, se cerrará esta ventana y aparecerá en pantalla la ventana de juego, la cual consta de una cuadrícula con una cantidad de celdas grises según la dificultad seleccionada en la ventana anterior. 
 
 
 
