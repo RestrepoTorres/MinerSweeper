@@ -7,17 +7,37 @@ Al abrir la aplicación, aparecerá en pantalla una ventana con varias opciones 
 
 Después de seleccionar una dificultad válida, el jugador deberá presionar el botón jugar que se encuentra en la parte inferior, si la dificultad seleccionada es la personalizada y esta tiene algún problema en sus datos ingresados, aparecerá un letrero advirtiendo al jugador sobre la situación. 
 
+
+
 <img src="menuinicial.png">
 
-Después de dar click al botón jugar con una opción válida de dificultad, se cerrará esta ventana y aparecerá en pantalla la ventana de juego, la cual consta de una cuadrícula con una cantidad de celdas grises según la dificultad seleccionada en la ventana anterior. 
+
+
+Después de dar click al botón jugar con una opción válida de dificultad, se cerrará esta ventana y aparecerá en pantalla la ventana de juego, la cual consta de una cuadrícula con una cantidad de celdas grises según la dificultad seleccionada en la ventana anterior. \\
+
+
 
 <img src="pantallaprincipal.png">
+
+
+
 Estas celdas ocultan un valor que se descubre al ser clickeada, las celdas pueden tomar el valor desde 1 hasta 8 y también pueden ser minas o casillas vacías, los valores numéricos representan la cantidad de minas que están inmediatamente adyacentes a la celda seleccionada, cada valor se representa con un color diferente. Si la casilla resulta estar vacía, entonces, se destaparán las 8 casillas adyacentes a esta y si alguna de estas casillas también resulta estar vacía el proceso se repite, si lo que oculta la casilla seleccionada por el jugador resulta siendo una mina, entonces, se abrirá una ventana de finalización del juego, puesto que se ha detonado una mina y un botón de salida.
 
+
+
 <img src="pantallaperdida.png">
+
+
+
+
+
 El jugador gana la partida si ha descubierto todas las celdas que no contienen minas, al llegar a este punto, se cerrará la ventana actual y se abrirá una ventana de finalización de la partida con un mensaje de victoria y un botón de salida.
 
+
+
 <img src="pantallaganada.png">
+
+
 
 # Manual técnico
 #### Sistema de archivos 
